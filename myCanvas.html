@@ -9,9 +9,9 @@
     <canvas id="myCanvas" width="400" height="300"></canvas>
      <canvas id="myCanvas_2" width="400" height="300"></canvas>
       
-      <p><label id = "speed-amount">0</label><input type="range" id="slicer-speed" min = "10" max = "100" step = "2" value="0"></p>
+      <p><label id = "speed-amount">0</label><input type="range" id="slicer-speed" min = "1" max = "100" step = "2" value="0"></p>
       
-      <p><label id = "range-amount">0</label> <input type="range" id="slicer-range" min = "10" max = "100" step = "2" value="0"></p>
+      <p><label id = "range-amount">0</label> <input type="range" id="slicer-range" min = "1" max = "100" step = "2" value="30"></p>
       
       <p><label id = "size-amount">0</label> <input type="range" id="slicer-size" min = "1" max = "100" step = "2" value="0"></p>
       
@@ -20,6 +20,7 @@
       <script src="js/control.js"></script>
     <script>
         
+     window.onload = function () {    
         //initilize my canvas
        var canvas = document.getElementById('myCanvas');
        var context = canvas.getContext('2d');
@@ -28,114 +29,93 @@
         ////render my ball circles
         
         //start position of ball   
-          initial_pos_x = 40
-          initial_pos_y = canvas.height / 2
+          initial_pos_x = 1
+          initial_pos_y = 1
         
         var myBall = Shape.Ball({pos_x:initial_pos_x, pos_y:initial_pos_y})
-        
 //         console.log(myBall.setPosition(1,1))
-         console.log('1:',myBall.getPosition())
-         console.log('1:',myBall.getScale())
+//         console.log('1:',myBall.getPosition())
+//         console.log('1:',myBall.getScale())
          
          //update position
-         myBall.setPosition(initial_pos_x+5, initial_pos_y+5)
-         myBall.setScale('',3)
+//         myBall.setPosition(initial_pos_x+5, initial_pos_y+5)
          
-         console.log('2:',myBall.getPosition())
-         console.log('2:',myBall.getScale())
-         console.log('2-y:',myBall.getScale().y)
          
-          angle = 0
-          centerY = 200,
+//         console.log('2:',myBall.getPosition())
+//         console.log('2:',myBall.getScale())
+//         console.log('2-y:',myBall.getScale().y)
               
           range = 60,
           speed = 0.05;
-          centerScale = .3/5
-        
-          //start position of ball   
-          initial_pos_x = 40
-          initial_pos_y = canvas.height / 2
-          
-          end_pos_x = canvas.width * .9
-          end_pos_y = canvas.height
-          
+          centerScale = .3     
           
 //          myBall.x = initial_pos_x;
 //          myBall.y = initial_pos_y;
-//        
-     (function drawFrame () {
-         
-//             var slicer_speed = document.getElementById('slicer-speed')
-//            var slicer_range = document.getElementById('slicer-range')
-//            var slicer_size  = document.getElementById('slicer-size')
-//            
-//            var speed_amount = document.getElementById("speed-amount")
-//            var range_amount = document.getElementById("range-amount")
-//            var size_amount  = document.getElementById("size-amount")
-         
-         window.requestAnimationFrame(drawFrame, canvas);
-        
-          context.clearRect(0,0,canvas.width,canvas.height);
-
-          myBall.update_position([5,5],slicer_speed,slicer_range,slicer_size);
+//       
+        window.requestAnimationFrame(animation)  
           
-          draw_path(myBall,[5,5]);
-        
-          myBall.draw(context);  
+    function animation () {
+   
+          context.clearRect(0,0,canvas.width,canvas.height);
+          
+          simulate_path(myBall,context);
+          
+         current_position = myBall.getPosition()
+         current_position = motionUpdate(current_position.x,current_position.y)
          
-          //update slicer 
-//        speed_amount.innerHTML = "Speed: " + slicer_speed.value
-//        range_amount.innerHTML = "Range: " + slicer_range.value
-//        size_amount.innerHTML  = "Size: "  + slicer_size.value
         
-
-    }());   
-        
-
-        
-function draw_path(target,change){
-    start_position = target.getPosition() 
-      var feq = 800
-      
-      //make a copy
-      // console.log('myBall:',myBall)
-      copy_ball = Shape.Ball()
-      copy_ball.setPosition(start_position[0],start_position[1]);
+         myBall.drawCircle(context)
     
-//      slicer_speed = document.getElementById('slicer-speed')
-//      new_speed = speed
-//      new_range = range
+         if (current_position.x > canvas.width || current_position.y > canvas.height){
+            myBall.setPosition(1,1)
+         }else {
+            myBall.setPosition(current_position.x,current_position.y)
+         }
+         
+          window.requestAnimationFrame(animation)
+    };   
+        
+ } //end windows onload
+        
+function simulate_path(target,context){
+      var feq = 500
+      
+      start_position = target.getPosition()
+      
+      next_position = motionUpdate(start_position.x,start_position.y)
      
       for (var i = 0; i<feq; i+=1){
         
-        copy_ball.update_position(change);
+        next_position = motionUpdate(next_position.x,next_position.y)
         
-        copy_ball.scaleX = copy_ball.scaleY = centerScale
-        
-        copy_ball.draw(context)
+        var copy_ball = Shape.Ball({pos_x:next_position.x,pos_y:next_position.y,scale_x:.05,scale_y:.05,})
+        copy_ball.drawCircle(context)
       }
 
 }//end draw path    
+        
+function motionUpdate(x,y){
+    var position = {}
+    
+  var slicer_speed = document.getElementById('slicer-speed')
+  var slicer_range = document.getElementById('slicer-range')
+  var slicer_size  = document.getElementById('slicer-size')
+            
+  var speed_amount = document.getElementById("speed-amount")
+  var range_amount = document.getElementById("range-amount")
+  var size_amount  = document.getElementById("size-amount")
 
-function draw(context,target){
-      context.save();
-      context.translate(target.getPosition());
-      context.rotate(this.rotation);
-      context.scale(this.scaleX, this.scaleY);
-      
-      context.lineWidth = this.lineWidth;
-      context.fillStyle = this.color;
-      context.beginPath();
-      //x, y, radius, start_angle, end_angle, anti-clockwise
-      context.arc(0, 0, this.radius, 0, (Math.PI * 2), true);
-      context.closePath();
-      context.fill();
-      if (this.lineWidth > 0) {
-        context.stroke();
-      }
-      context.restore(); 
-}
-           
+        speed_amount.innerHTML = "Speed: " + slicer_speed.value
+        range_amount.innerHTML = "Range: " + slicer_range.value
+        size_amount.innerHTML  = "Size: "  + slicer_size.value
+  period = Math.PI*.04
+    position.x = x + .5*slicer_speed.value
+    position.y = Math.cos(x*period)*slicer_range.value + 300/2
+        
+    return position
+    
+
+}       
          
     </script>
         
