@@ -1,0 +1,264 @@
+* { margin:0; padding:0; }
+
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/* generic */
+
+body {
+    background: #494949;
+	font: 13px  "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+	font-weight: normal;
+	color: #eee;
+    width: 100%;
+  	text-align: left;
+    line-height: 1.6;
+    position:relative;
+}
+
+h1 {
+    font-size: 26px;
+    font-family: "CandalRegular", "Helvetica", "Arial", sans-serif;
+    margin-top:40px;
+    margin-bottom:-6px;
+	font-weight: normal;
+	color: #fff;
+	text-align: center;
+}
+
+h2 {
+    margin-top: 45px;
+    margin-bottom: 15px;
+    font-size: 20px;
+    font-family: "CandalRegular", "Helvetica", "Arial", sans-serif;
+	font-weight: normal;
+	color: #fff;
+	border:none;
+    line-height: 1.2;
+	text-align: center;
+}
+
+h3 {
+	color: #fff;
+    margin-bottom: 40px;
+    font-size: 10px;
+	font-weight: normal;
+	text-align: center;
+}
+
+h4 {
+    margin-top: 20px;
+    margin-bottom: -5px;
+    font-size: 15px;
+    font-family: "CandalRegular", "Helvetica", "Arial", sans-serif;
+	font-weight: normal;
+	color: #fff;
+}
+
+h5 {
+    font-size: 12px;
+    font-family: "CandalRegular", "Helvetica", "Arial", sans-serif;
+    margin-bottom:6px;
+	font-weight: normal;
+	color: #fff;
+	text-align: center;
+}
+
+ul {
+    margin-left:30px
+}
+
+li {
+    margin-top:5px;
+}
+
+p {
+    margin-top:12px;
+    margin-bottom:12px;
+}
+
+strong {
+    font-weight:bold;
+	color: #b00;
+}
+
+b {
+    font-weight:bold;
+	color: #000;
+}
+
+img { border:none; }
+
+a { text-decoration:underline; color: #fff; border:none; }
+a:hover   { text-decoration:underline; color: #fa7; }
+
+.selflink {
+	color: #fff;
+	text-decoration: none;
+}
+
+.sidebar {
+	position:absolute;
+	left:600px;
+	width:150px;
+	font-size:11px;
+	color:#aaa;
+}
+
+.center {
+	width:100%;
+	text-align: center;
+}
+
+.spaced {
+	margin-top:20px;
+	margin-bottom:20px;
+}
+
+.shadowed {
+	-webkit-box-shadow:0px 3px 5px rgba(0,0,0,0.5);
+	-moz-box-shadow:0px 3px 5px rgba(0,0,0,0.5);
+	box-shadow:0px 3px 5px rgba(0,0,0,0.5);
+}
+
+
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/* intro */
+
+.intro {
+	width:900px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom:40px;
+    position:relative;
+}
+
+.intro .body {
+	width:420px;
+}
+
+.outro {
+	width:900px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:50px;
+    margin-bottom:10px;
+    position:relative;
+}
+
+.outro .body {
+	width:650px;
+}
+
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/* paper */
+
+.paper {
+    background: #ffffff;
+	font: 12px "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+	font-weight: normal;
+	color: #888;
+    width: 100%;
+    line-height: 1.5;
+    position:relative;
+}
+
+.paper .body {
+	width:900px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:0px;
+    padding-top:46px;
+    padding-bottom:60px;
+    position:relative;
+}
+
+.paper .shadowTop {
+	width:100%;
+	height:20px;
+	position:absolute;
+	left:0px;
+	top:-20px;
+	background-image: url(Images/PaperShadowTop.png);
+}
+
+.shadowBottom {
+	width:100%;
+	height:30px;
+	position:absolute;
+	left:0px;
+	background-image: url(Images/PaperShadowBottom.png);
+}
+
+.paper h1 {
+    font-size: 30px;
+    margin-top:40px;
+    margin-bottom:-6px;
+	font-weight: bold;
+	color: #000;
+	text-align: left;
+}
+
+.paper h2 {
+    font-size: 16px;
+    margin-top:0px;
+    margin-bottom:-6px;
+	font-weight: bold;
+	color: #000;
+	text-align: left;
+}
+
+.paper h3 {
+    font-size: 14px;
+    margin-top:0px;
+    margin-bottom:40px;
+	font-weight: normal;
+	font-style: italic;
+	color: #000;
+	text-align: left;
+}
+
+.paper .section {
+	position: relative;
+	margin-left: 82px;
+	margin-bottom:30px;
+	line-height: 1.3;
+}
+
+#abstract {
+	line-height: 1.6;
+}
+
+.paper .sectionTitle {
+	position: absolute;
+	left: -82px;
+	color: #000;
+	font-weight: bold;
+}
+
+.paper .note {
+	font-style: italic;
+	font-size: 10px;
+	color: #bbb;
+}
+
+.paper strong {
+	color: #000;
+	font-weight: bold;
+}
+
+.paper .section .row {
+	position: relative;
+	line-height:1.1;
+}
+
+.paper .section .row .item {
+	position: absolute;
+}
+
+.paper .section .row .item p {
+    margin:0;
+}
+
+

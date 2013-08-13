@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0px;
+        padding: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    
+     <p>First name: <strong data-bind="text:firstName"></strong></p>
+    <p>Last name: <strong data-bind="text:lastName"></strong></p>
+    <p>Full name: <strong data-bind="text:fullName"></strong></p>
+
+      
+      <br>
+      <p>First name: <input data-bind="value:firstName"/></p>
+      <p>Last name: <input data-bind="value:lastName"/></p>
+      
+      <br>
+      <button data-bind = "click: capitalizeLastName">Capitalize Last Name</button>
+      
+      
+<!--    <script src = 'my_function_chapter.js'></script>-->
+<!--    <script src = 'js/my_inheritance_chapter.js'></script>-->
+<!--      <script src = 'js/my_array_chaptera.js'></script>-->
+      
+      <script type='text/javascript' src='knockout-2.3.0.js'></script>
+      
+      
+       <script>
+      // This is a simple *viewmodel* - JavaScript that defines the data and behavior of your UI
+        function AppViewModel() {
+            this.firstName = ko.observable("Bt");
+            this.lastName = ko.observable("Bton");
+            this.fullName = ko.computed(function() {
+                return this.firstName() + ' ' +  this.lastName();
+            },this);
+            
+            //add a new function 
+            this.capitalizeLastName = function() {
+            var currentVal = this.lastName();        // Read the current value
+            this.lastName(currentVal.toUpperCase()); // Write back a modified value
+            };
+        }
+
+        // Activates knockout.js
+        ko.applyBindings(new AppViewModel());
+      
+           //read 
+           //myViewModel.personName() return Bob
+           //myViewModel.personAge()   return 123
+           
+           //write
+            //myViewModel.personName('Mary').personAge(50) 
+           
+           ko.applyBindings(myViewModel);
+
+           
+      </script>
+<!--
+      <script>
+      function FirstReverse(str) { 
+           array = []
+          // code goes here  
+          for (var i=str.length-1;i>=0;i-=1){
+            array[array.length] = str[i]
+          }
+          return array.join(''); 
+                 
+        }
+        
+//        document.write(FirstReverse('sdfdfa'));      
+          
+          function FirstFactorial(num) { 
+               result = num
+              // code goes here  
+              for (var i = num-1;i>=1;i-=1){
+                   result = result * i
+              }
+                  
+                  
+              return result; 
+         
+          }
+          
+//          document.write(FirstFactorial(1) + "<br");
+          document.write(FirstFactorial(1))
+      
+      </script>
+-->
+  </body>
+</html>

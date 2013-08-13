@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<!-- saved from url=(0061)http://worrydream.com/ScientificCommunicationAsSequentialArt/ -->
+<html slick-uniqueid="1"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <!--<base target="_top">--><base href="." target="_top">
+
+    <title>Scientific Communication As Sequential Art</title>
+    <link rel="stylesheet" href="./Scientific Communication As Sequential Art_files/stylesheet.css" type="text/css">
+    <link rel="stylesheet" href="./Scientific Communication As Sequential Art_files/style.css" type="text/css">
+
+    <script type="text/javascript" src="./Scientific Communication As Sequential Art_files/mootools-core-1.3.2.js"></script>
+    <script type="text/javascript" src="./Scientific Communication As Sequential Art_files/BVLayer.js"></script>
+    <script type="text/javascript" src="./Scientific Communication As Sequential Art_files/BVTouches.js"></script>
+    <script type="text/javascript" src="./Scientific Communication As Sequential Art_files/BVText.js"></script>
+
+    <script type="text/javascript" src="./Scientific Communication As Sequential Art_files/main.js"></script>
+    <script type="text/javascript" src="./Scientific Communication As Sequential Art_files/Ring.js"></script>
+    <script type="text/javascript" src="./Scientific Communication As Sequential Art_files/Slider.js"></script>
+
+<script src="chrome-extension://jgghnecdoiloelcogfmgjgcacadpaejf/inject.js"></script></head>
+
+<body data-twttr-rendered="true">
+<div id="everything">
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- intro -->
+
+<div class="intro">
+
+<h1>Scientific Communication As Sequential Art</h1>
+<h3><a class="selflink" href="http://worrydream.com/">Bret Victor</a> / May 24, 2011</h3>
+
+<div class="body">
+
+<div style="display:block; position:absolute; left:450px; width:444px; height:195px; margin-top:6px;"><a href="http://research.yahoo.com/files/w_s_NATURE_0.pdf"><img src="./Scientific Communication As Sequential Art_files/Nature.png" width="444" height="195"></a></div>
+
+<p>This page presents a scientific paper that has been redesigned as a sequence of illustrations with captions.  This comic-like format, with tightly-coupled pictures and prose, allows the author to depict and describe simultaneously — show and tell.</p>
+
+<p>It is based on Watts and Strogatz's seminal <a href="http://research.yahoo.com/files/w_s_NATURE_0.pdf">Nature paper</a> on network theory, shown to the right. This paper was chosen because it's accessible to a broad audience, and it's very well-written — already near the limit of clarity for just prose.</p>
+
+<p>Try actually reading this design instead of skimming it (it's quicker than it looks!) and consider how the illustrations make abstract descriptions more concrete, and help you maintain the "picture in your head".</p>
+
+<p>Further discussion follows.</p>
+
+</div> <!-- body -->
+
+</div> <!-- intro -->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- paper -->
+
+<div class="paper">
+<div class="shadowTop"></div>
+
+<div class="body">
+
+<div style="display:none;">
+	<h1>Collective dynamics of 'small-world' networks</h1>
+	<h2>Duncan J. Watts &amp; Steven H. Strogatz</h2>
+	<h3>Department of Theoretical and Applied Mechanics, Kimball Hall, Cornell University, Ithaca, New York 14853, USA</h3>
+</div>
+
+<img src="./Scientific Communication As Sequential Art_files/Header.png" width="661" height="73" style="padding-bottom:12px;">
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- abstract -->
+
+<div class="section" id="abstract">
+<div class="sectionTitle">ABSTRACT</div>
+<p><strong>Networks of coupled dynamical systems</strong> have been used to model biological oscillators, Josephson junction arrays, excitable media, neural networks, spatial games, genetic control networks and many other self-organizing systems. Ordinarily, the connection topology is assumed to be either <strong>completely regular or completely random</strong>. But many biological, technological and social networks lie somewhere <strong>between these two extremes</strong>.</p>
+<p>Here we explore simple models of networks that can be tuned through this middle ground: <strong>regular networks 'rewired'</strong> to introduce increasing amounts of disorder. We find that these systems can be highly clustered, like regular lattices, yet have small characteristic path lengths, like random graphs. We call them <strong>'small-world' networks</strong>, by analogy with the small-world phenomenon (popularly known as six degrees of separation). The neural network of the worm <i>Caenorhabditis elegans</i>, the power grid of the western United States, and the collaboration graph of film actors are shown to be small-world networks.</p>
+<p>Models of dynamical systems with small-world coupling display enhanced signal-propagation speed, computational power, and synchronizability. In particular, infectious diseases spread more easily in small-world networks than in regular lattices.</p>
+</div>
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- algorithm -->
+
+<div class="section">
+<div class="sectionTitle">ALGORITHM</div>
+<p>To interpolate between regular and random networks, we consider the following random rewiring procedure.</p>
+
+<div class="row" style="height:115px;">
+	<div class="item">
+		<p>We start with a <br>ring of <i>n</i> vertices</p>
+		<canvas style="position:absolute; top:46px; left:5px;" class="dynamic class-RingWithNoEdges" width="64" height="64"></canvas>
+		<p style="position:absolute; top:72px; left:22px; width:100px; " class="note">n = 12</p>
+	</div>
+	<div class="item" style="left:104px;">
+		<p>where each vertex<br>is connected to its <br><i>k</i> nearest neighbors</p>
+		<canvas style="position:absolute; top:46px; left:16px;" class="dynamic class-RingWithOnlyTopEdges" width="64" height="64"></canvas>
+		<p style="position:absolute;top:72px;left:37px;width:100px;" class="note">k = 4</p>
+	</div>
+	<div class="item" style="left:221px;">
+		<p style="margin-left:14px;">like so.</p>
+		<canvas style="position:absolute; top:46px; left:0px;" class="dynamic class-RingWithHighlightedTopEdges" width="64" height="64"></canvas>
+	</div>
+	<div class="item" style="left:301px;">
+		<p>We choose a vertex, and <br>the edge to its nearest <br>clockwise neighbour.</p>
+		<canvas style="position:absolute; top:46px; left:25px;" class="dynamic class-RingWithRewiringInProgress lap-0" width="64" height="64"></canvas>
+	</div>
+	<div class="item" style="left:452px;">
+		<p>With probability <i>p</i>, we reconnect <br>this edge to a vertex chosen <br>uniformly at random over the</p>
+		<p style="position:absolute; top:39px; left:76px; width:170px;">entire ring, with <br>duplicate edges <br>forbidden.  Other- <br>wise, we leave <br>the edge in place.</p>
+		<canvas style="position:absolute; top:46px; left:0px;" class="dynamic class-RingWithRewiringInProgress lap-0 step-0" width="64" height="64"></canvas>
+	</div>
+	<div class="item" style="left:650px;">
+		<p>We repeat this process by <br>moving clockwise around <br>the ring, considering each </p>
+		<p style="position:absolute; top:39px; left:74px; width:100px;">vertex in turn <br>until one lap <br>is completed.</p>
+		<canvas style="position:absolute; top:46px; left:0px;" class="dynamic class-RingWithRewiringInProgress lap-0 step-1 globalID-a" width="64" height="64"></canvas>
+
+<div style="position:absolute; top:83px; left:74px;" class="dynamic class-Slider viewID-a width-70">
+        <div style="position: relative; z-index: 0; left: -40px; top: 0px; background-size: 100%; pointer-events: auto; -webkit-transform-origin: 0% 0%; -webkit-background-size: 100%; -webkit-transition: -webkit-transform 0s ease-in-out, opacity; transition: -webkit-transform 0s ease-in-out, opacity; width: 150px; height: 16px; background-repeat: no-repeat no-repeat;">
+            <div style="position: absolute; z-index: 0; left: 20px; top: 8px; background-size: 100%; pointer-events: none; -webkit-transform-origin: 0% 0%; -webkit-background-size: 100%; -webkit-transition: -webkit-transform 0s ease-in-out, opacity; transition: -webkit-transform 0s ease-in-out, opacity; background-image: url(http://worrydream.com/ScientificCommunicationAsSequentialArt/Images/SliderKnob.png); width: 1px; height: 1px; background-repeat: no-repeat no-repeat;"></div>
+            <div style="position: absolute; z-index: 0; left: 40px; top: 6px; background-size: 100%; pointer-events: none; -webkit-transform-origin: 0% 0%; -webkit-background-size: 100%; -webkit-transition: -webkit-transform 0s ease-in-out, opacity; transition: -webkit-transform 0s ease-in-out, opacity; background-image: url(http://worrydream.com/ScientificCommunicationAsSequentialArt/Images/SliderLeft.png); width: 8px; height: 4px; background-repeat: no-repeat no-repeat;"></div>
+            <div style="position: absolute; z-index: 0; left: 102px; top: 6px; background-size: 100%; pointer-events: none; -webkit-transform-origin: 0% 0%; -webkit-background-size: 100%; -webkit-transition: -webkit-transform 0s ease-in-out, opacity; transition: -webkit-transform 0s ease-in-out, opacity; background-image: url(http://worrydream.com/ScientificCommunicationAsSequentialArt/Images/SliderRight.png); width: 8px; height: 4px; background-repeat: no-repeat no-repeat;"></div>
+            <div style="position: absolute; z-index: 0; left: 48px; top: 6px; background-size: 100%; pointer-events: none; -webkit-transform-origin: 0% 0%; -webkit-background-size: 100%; -webkit-transition: -webkit-transform 0s ease-in-out, opacity; transition: -webkit-transform 0s ease-in-out, opacity; background-image: url(http://worrydream.com/ScientificCommunicationAsSequentialArt/Images/SliderCenter.png); width: 54px; height: 4px; background-repeat: no-repeat no-repeat;"></div>
+            <div style="position: absolute; z-index: 0; left: 40px; top: 2px; background-size: 100%; pointer-events: none; -webkit-transform-origin: 0% 0%; -webkit-background-size: 100%; -webkit-transition: -webkit-transform 0s ease-in-out, opacity; transition: -webkit-transform 0s ease-in-out, opacity; background-image: url(http://worrydream.com/ScientificCommunicationAsSequentialArt/Images/SliderKnob.png); width: 13px; height: 13px; background-repeat: no-repeat no-repeat;"></div>
+      </div>
+   </div>
+</div>
+</div> <!-- row -->
+
+<div class="row" style="height:137px; margin-top:20px;">
+	<div class="item">
+		<p>Next, we consider the <br>edges that connect vertices <br>to their second-nearest <br>neighbours clockwise.</p>
+		<canvas style="position:absolute; top:62px; left:25px;" class="dynamic class-RingWithRewiringInProgress lap-1" width="64" height="64"></canvas>
+	</div>
+	<div class="item" style="left:164px;">
+		<p>As before, we randomly <br>rewire each of these <br>edges with probability <i>p</i>.</p>
+		<canvas style="position:absolute; top:62px; left:28px;" class="dynamic class-RingWithRewiringInProgress lap-1 step-0 globalID-b" width="64" height="64"></canvas>
+		<div style="position:absolute; top:42px; left:26px;" class="dynamic class-Slider viewID-b width-70"><div style="position: relative; z-index: 0; left: -40px; top: 0px; background-size: 100%; pointer-events: auto; -webkit-transform-origin: 0% 0%; -webkit-background-size: 100%; -webkit-transition: -webkit-transform 0s ease-in-out, opacity; transition: -webkit-transform 0s ease-in-out, opacity; width: 150px; height: 16px; background-repeat: no-repeat no-repeat;"><div style="position: absolute; z-index: 0; left: 20px; top: 8px; background-size: 100%; pointer-events: none; -webkit-transform-origin: 0% 0%; -webkit-background-size: 100%; -webkit-transition: -webkit-transform 0s ease-in-out, opacity; transition: -webkit-transform 0s ease-in-out, opacity; background-image: url(http://worrydream.com/ScientificCommunicationAsSequentialArt/Images/SliderKnob.png); width: 1px; height: 1px; background-repeat: no-repeat no-repeat;"></div><div style="position: absolute; z-index: 0; left: 40px; top: 6px; background-size: 100%; pointer-events: none; -webkit-transform-origin: 0% 0%; -webkit-background-size: 100%; -webkit-transition: -webkit-transform 0s ease-in-out, opacity; transition: -webkit-transform 0s ease-in-out, opacity; background-image: url(http://worrydream.com/ScientificCommunicationAsSequentialArt/Images/SliderLeft.png); width: 8px; height: 4px; background-repeat: no-repeat no-repeat;"></div><div style="position: absolute; z-index: 0; left: 102px; top: 6px; background-size: 100%; pointer-events: none; -webkit-transform-origin: 0% 0%; -webkit-background-size: 100%; -webkit-transition: -webkit-transform 0s ease-in-out, opacity; transition: -webkit-transform 0s ease-in-out, opacity; background-image: url(http://worrydream.com/ScientificCommunicationAsSequentialArt/Images/SliderRight.png); width: 8px; height: 4px; background-repeat: no-repeat no-repeat;"></div><div style="position: absolute; z-index: 0; left: 48px; top: 6px; background-size: 100%; pointer-events: none; -webkit-transform-origin: 0% 0%; -webkit-background-size: 100%; -webkit-transition: -webkit-transform 0s ease-in-out, opacity; transition: -webkit-transform 0s ease-in-out, opacity; background-image: url(http://worrydream.com/ScientificCommunicationAsSequentialArt/Images/SliderCenter.png); width: 54px; height: 4px; background-repeat: no-repeat no-repeat;"></div><div style="position: absolute; z-index: 0; left: 34px; top: 2px; background-size: 100%; pointer-events: none; -webkit-transform-origin: 0% 0%; -webkit-background-size: 100%; -webkit-transition: -webkit-transform 0s ease-in-out, opacity; transition: -webkit-transform 0s ease-in-out, opacity; background-image: url(http://worrydream.com/ScientificCommunicationAsSequentialArt/Images/SliderKnob.png); width: 13px; height: 13px; background-repeat: no-repeat no-repeat;"></div></div></div>
+	</div>
+	<div class="item" style="left:315px;">
+		<p>We continue this process, <br>circulating around the ring and <br>proceeding outward to more <br>distant neighbours after each <br>lap, until each original edge <br>has been considered once.</p>
+		<p style="margin-top:10px;">As there are <i>nk/2</i> edges in <br>the entire graph, the rewiring <br>process stops after <i>k/2</i> laps.</p>
+	</div>
+	<div class="item" style="left:516px;">
+		<p>For <i>p</i> = 0, <br>the ring is <br>unchanged.</p>
+		<canvas style="position:absolute; top:62px; left:0px;" class="dynamic class-RingWithRewiringComplete p-0" width="64" height="64"></canvas>
+	</div>
+	<div class="item" style="left:602px;">
+		<p>As <i>p</i> increases, the <br>graph becomes <br>increasingly disordered.</p>
+		<canvas style="position:absolute; top:62px; left:29px;" class="dynamic class-RingWithRewiringComplete globalID-c" width="64" height="64"></canvas>
+		<div style="position:absolute; top:42px; left:0px;" class="dynamic class-Slider viewID-c width-96"><div style="position: relative; z-index: 0; left: -40px; top: 0px; background-size: 100%; pointer-events: auto; -webkit-transform-origin: 0% 0%; -webkit-background-size: 100%; -webkit-transition: -webkit-transform 0s ease-in-out, opacity; transition: -webkit-transform 0s ease-in-out, opacity; width: 176px; height: 16px; background-repeat: no-repeat no-repeat;"><div style="position: absolute; z-index: 0; left: 20px; top: 8px; background-size: 100%; pointer-events: none; -webkit-transform-origin: 0% 0%; -webkit-background-size: 100%; -webkit-transition: -webkit-transform 0s ease-in-out, opacity; transition: -webkit-transform 0s ease-in-out, opacity; background-image: url(http://worrydream.com/ScientificCommunicationAsSequentialArt/Images/SliderKnob.png); width: 1px; height: 1px; background-repeat: no-repeat no-repeat;"></div><div style="position: absolute; z-index: 0; left: 40px; top: 6px; background-size: 100%; pointer-events: none; -webkit-transform-origin: 0% 0%; -webkit-background-size: 100%; -webkit-transition: -webkit-transform 0s ease-in-out, opacity; transition: -webkit-transform 0s ease-in-out, opacity; background-image: url(http://worrydream.com/ScientificCommunicationAsSequentialArt/Images/SliderLeft.png); width: 8px; height: 4px; background-repeat: no-repeat no-repeat;"></div><div style="position: absolute; z-index: 0; left: 128px; top: 6px; background-size: 100%; pointer-events: none; -webkit-transform-origin: 0% 0%; -webkit-background-size: 100%; -webkit-transition: -webkit-transform 0s ease-in-out, opacity; transition: -webkit-transform 0s ease-in-out, opacity; background-image: url(http://worrydream.com/ScientificCommunicationAsSequentialArt/Images/SliderRight.png); width: 8px; height: 4px; background-repeat: no-repeat no-repeat;"></div><div style="position: absolute; z-index: 0; left: 48px; top: 6px; background-size: 100%; pointer-events: none; -webkit-transform-origin: 0% 0%; -webkit-background-size: 100%; -webkit-transition: -webkit-transform 0s ease-in-out, opacity; transition: -webkit-transform 0s ease-in-out, opacity; background-image: url(http://worrydream.com/ScientificCommunicationAsSequentialArt/Images/SliderCenter.png); width: 80px; height: 4px; background-repeat: no-repeat no-repeat;"></div><div style="position: absolute; z-index: 0; left: 48px; top: 2px; background-size: 100%; pointer-events: none; -webkit-transform-origin: 0% 0%; -webkit-background-size: 100%; -webkit-transition: -webkit-transform 0s ease-in-out, opacity; transition: -webkit-transform 0s ease-in-out, opacity; background-image: url(http://worrydream.com/ScientificCommunicationAsSequentialArt/Images/SliderKnob.png); width: 13px; height: 13px; background-repeat: no-repeat no-repeat;"></div></div></div>
+		<p id="c-note" style="position:absolute; top:42px; left:98px; width:100px; pointer-events:none;" class="note">p=0.15</p>
+	</div>
+	<div class="item" style="left:749px; width:100px;">
+		<p>At <i>p</i> = 1, all <br>edges are re- <br>wired randomly.</p>
+		<canvas style="position:absolute; top:62px; left:0px;" class="dynamic class-RingWithRewiringComplete p-1" width="64" height="64"></canvas>
+	</div>
+
+</div> <!-- row -->
+
+<p>This construction allows us to 'tune' the graph between regularity (p = 0) and disorder (p = 1), and thereby to probe the intermediate region 0 &lt; p &lt; 1, about which little is known.</p>
+
+</div> <!-- section -->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- metrics -->
+
+<div class="section">
+<div class="sectionTitle">METRICS</div>
+
+<p style="width:856px;">We quantify the structural properties of these graphs by their <strong>characteristic path length <i>L(p)</i></strong> and <strong>clustering coefficient <i>C(p)</i></strong>.<br>
+<i>L(p)</i> measures the typical separation between two vertices (a global property). <i>C(p)</i> measures the cliquishness of a typical neighbourhood (a local property).</p>
+
+<div class="row" style="height:140px;">
+	<div class="item">
+		<p><i>L</i> is defined as the number <br>of edges in the shortest <br>path between two vertices</p>
+		<canvas style="position:absolute; top:46px; left:0px;" class="dynamic class-MetricsRingWithPath pathFrom-0 pathTo-1" width="64" height="64"></canvas>
+		<canvas style="position:absolute; top:46px; left:80px;" class="dynamic class-MetricsRingWithPath pathFrom-0 pathTo-3" width="64" height="64"></canvas>
+		<p style="position:absolute; top:113px; left:0px; width:64px; text-align:center;" class="note">shortest path<br> is 1 edge</p>
+		<p style="position:absolute; top:113px; left:80px; width:64px; text-align:center;" class="note">shortest path<br> is 3 edges</p>
+	</div>
+	<div class="item" style="left:164px;">
+		<p>averaged over all <br>pairs of vertices.</p>
+		<canvas style="position:absolute; top:46px; left:10px;" class="dynamic class-MetricsRingWithStep globalID-d" width="64" height="64"></canvas>
+		<div style="position:absolute; top:29px; left:8px;" class="dynamic class-Slider viewID-d width-70"><div style="position: relative; z-index: 0; left: -40px; top: 0px; background-size: 100%; pointer-events: auto; -webkit-transform-origin: 0% 0%; -webkit-background-size: 100%; -webkit-transition: -webkit-transform 0s ease-in-out, opacity; transition: -webkit-transform 0s ease-in-out, opacity; width: 150px; height: 16px; background-repeat: no-repeat no-repeat;"><div style="position: absolute; z-index: 0; left: 20px; top: 8px; background-size: 100%; pointer-events: none; -webkit-transform-origin: 0% 0%; -webkit-background-size: 100%; -webkit-transition: -webkit-transform 0s ease-in-out, opacity; transition: -webkit-transform 0s ease-in-out, opacity; background-image: url(http://worrydream.com/ScientificCommunicationAsSequentialArt/Images/SliderKnob.png); width: 1px; height: 1px; background-repeat: no-repeat no-repeat;"></div><div style="position: absolute; z-index: 0; left: 40px; top: 6px; background-size: 100%; pointer-events: none; -webkit-transform-origin: 0% 0%; -webkit-background-size: 100%; -webkit-transition: -webkit-transform 0s ease-in-out, opacity; transition: -webkit-transform 0s ease-in-out, opacity; background-image: url(http://worrydream.com/ScientificCommunicationAsSequentialArt/Images/SliderLeft.png); width: 8px; height: 4px; background-repeat: no-repeat no-repeat;"></div><div style="position: absolute; z-index: 0; left: 102px; top: 6px; background-size: 100%; pointer-events: none; -webkit-transform-origin: 0% 0%; -webkit-background-size: 100%; -webkit-transition: -webkit-transform 0s ease-in-out, opacity; transition: -webkit-transform 0s ease-in-out, opacity; background-image: url(http://worrydream.com/ScientificCommunicationAsSequentialArt/Images/SliderRight.png); width: 8px; height: 4px; background-repeat: no-repeat no-repeat;"></div><div style="position: absolute; z-index: 0; left: 48px; top: 6px; background-size: 100%; pointer-events: none; -webkit-transform-origin: 0% 0%; -webkit-background-size: 100%; -webkit-transition: -webkit-transform 0s ease-in-out, opacity; transition: -webkit-transform 0s ease-in-out, opacity; background-image: url(http://worrydream.com/ScientificCommunicationAsSequentialArt/Images/SliderCenter.png); width: 54px; height: 4px; background-repeat: no-repeat no-repeat;"></div><div style="position: absolute; z-index: 0; left: 34px; top: 2px; background-size: 100%; pointer-events: none; -webkit-transform-origin: 0% 0%; -webkit-background-size: 100%; -webkit-transition: -webkit-transform 0s ease-in-out, opacity; transition: -webkit-transform 0s ease-in-out, opacity; background-image: url(http://worrydream.com/ScientificCommunicationAsSequentialArt/Images/SliderKnob.png); width: 13px; height: 13px; background-repeat: no-repeat no-repeat;"></div></div></div>
+	</div>
+	<div class="item" style="left:310px;">
+		<p><i>C</i> is defined as follows. <br>Suppose that a vertex <i>v</i> <br>has <i>k<sub>v</sub></i> neighbours.</p>
+		<canvas style="position:absolute; top:46px; left:26px;" class="dynamic class-MetricsRingWithNeighbors neighborsOf-10" width="64" height="64"></canvas>
+		<p style="position:absolute; top:113px; left:18px; width:100px;" class="note">k<sub>v</sub> = 4 neighbours</p>
+	</div>
+	<div class="item" style="left:456px;">
+		<p>Then at most <i>k<sub>v</sub> (k<sub>v</sub> – 1) / 2</i> edges <br>can exist between them. (This <br>occurs when every neighbor of</p>
+		<p style="position:absolute; top:41px; left:78px; width:100px;"><i>v</i> is connected <br>to every other <br>neighbour of <i>v</i>.)</p>
+		<canvas style="position:absolute; top:46px; left:0px;" class="dynamic class-MetricsRingWithClique neighborsOf-10" width="64" height="64"></canvas>
+		<p style="position:absolute; top:113px; left:-2px; width:200px;" class="note">at most 6 edges between 4 neighbours</p>
+	</div>
+	<div class="item" style="left:656px; width:180px;">
+		<p>Let <i>C<sub>v</sub></i> denote the fraction of <br>these allowable edges that <br>actually exist.  Define <i>C</i> as the</p>
+		<p style="position:absolute; top:41px; left:79px; width:100px;">average of <i>C<sub>v</sub></i> <br>over all vertices.</p>
+		<canvas style="position:absolute; top:46px; left:0px;" class="dynamic class-MetricsRingWithClique neighborsOf-10 removeNeighbors-2" width="64" height="64"></canvas>
+		<p style="position:absolute; top:113px; left:0px; width:190px;" class="note">4 out of 6 edges exist. C<sub>v</sub> = 4/6 = 0.67</p>
+	</div>
+</div> <!-- row -->
+
+<p>For friendship networks, these statistics have intuitive meanings: <i>L</i> is the average number of friendships in the shortest chain connecting two people.<br>
+<i>C<sub>v</sub></i> reflects the extent to which friends of <i>v</i> are also friends of each other; and thus <i>C</i> measures the cliquishness of a typical friendship circle.</p>
+
+</div> <!-- section -->
+
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- small worlds -->
+
+<div class="section">
+<div class="sectionTitle" style="line-height:1.0; margin-top:3px;">SMALL<br>WORLDS</div>
+
+<div class="row" style="height:144px;">
+	<div class="item">
+		<p>The regular lattice at <i>p = 0</i> is <br>a highly clustered, large world <br>where <i>L</i> grows linearly with <i>n</i>.</p>
+		<img style="position:absolute; top:56px; left:0px;" src="./Scientific Communication As Sequential Art_files/Plots1.png" width="146" height="70">
+	</div>
+	<div class="item" style="left:180px;">
+		<p>The random network at <i>p = 1</i> is a <br>poorly clustered, small world where <br><i>L</i> grows only logarithmically with <i>n</i>.</p>
+		<img style="position:absolute; top:56px; left:16px;" src="./Scientific Communication As Sequential Art_files/Plots2.png" width="149" height="70">
+	</div>
+	<div class="item" style="left:387px; width:470px;">
+		<p>These limiting cases might lead one to suspect that large <i>C</i> is always associated with <br>large <i>L</i>, and small <i>C</i> with small <i>L</i>.  On the contrary, we find that there is a broad <br>interval of <i>p</i> over which <i>L(p)</i> is almost as small as <i>L<sub>random</sub></i> yet <i>C<sub>p</sub></i> &gt;&gt; <i>C<sub>random</sub></i>.</p>
+		<img style="position:absolute; top:52px; left:-4px;" src="./Scientific Communication As Sequential Art_files/Figure2.png" width="449" height="287">
+		<p style="position:absolute; top:348px; left:18px; width:430px; line-height:1.3;" class="note">The data shown in the figure are averages over 20 random realizations of the rewiring process, and have been normalized by the values L(0), C(0) for a regular lattice. All the graphs have n = 1000 vertices and an average degree of k = 10 edges per vertex. We note that a logarithmic horizontal scale has been used to resolve the rapid drop in L(p), corresponding to the onset of the small-world phenomenon. During this drop, C(p) remains almost constant at its value for the regular lattice, indicating that the transition to a small world is almost undetectable at the local level.</p>
+	</div>
+	<div style="display:block; position:absolute; top:150px; width:320px; height:1px; background-color:#aaa;"></div>
+	<div style="display:none; position:absolute; top:152px; width:387px; height:1px; background-color:#ccc;"></div>
+	<div style="display:none; position:absolute; top:152px; left:813px; width:27px; height:1px; background-color:#ccc;"></div>
+</div> <!-- row -->
+
+<div class="row" style="height:172px; margin-top:20px; line-height:1.2;">
+	<div class="item">
+		<p>These small-world networks result from the immediate drop <br>in <i>L(p)</i> caused by the introduction of a few long-range edges. <br>Such 'short cuts' connect vertices that would otherwise be <br>much farther apart than <i>L<sub>random</sub></i>.  For small <i>p</i>, each short</p>
+		<p style="position:absolute; top:56px; left:177px; width:190px;">cut has a highly nonlinear <br>effect on <i>L</i>, contracting the <br>distance not just between the <br>pair of vertices that it <br>connects, but between their <br>immediate neighbourhoods, <br>neighbourhoods of neigh- <br>bourhoods and so on.</p>
+		<canvas style="position:absolute; top:63px; left:0px;" class="dynamic class-RingWithHops vertexCount-20" width="76" height="76"></canvas>
+		<p style="position:absolute; top:144px; left:0px; width:76px; text-align:center;" class="note">5 hops to <br>neighbourhood</p>
+		<canvas style="position:absolute; top:63px; left:88px;" class="dynamic class-RingWithShortcut vertexCount-20" width="76" height="76"></canvas>
+		<p style="position:absolute; top:144px; left:88px; width:76px; text-align:center;" class="note">shortcut to <br>neighbourhood</p>
+	</div>
+</div> <!-- row -->
+
+<div class="row" style="height:142px; margin-top:14px; line-height:1.2;">
+	<div class="item">
+		<p>By contrast, an edge removed from a clustered neighbour- <br>hood to make a short cut has, at most, a linear effect on <i>C</i>; <br>hence <i>C(p)</i> remains practically unchanged for small p even <br>though <i>L(p)</i> drops rapidly. The important implication  here is</p>
+		<p style="position:absolute; top:56px; left:175px; width:190px;">that at the local level (as <br>reflected by <i>C(p)</i>), the trans- <br>ition to a small world is <br>almost undetectable.</p>
+		<canvas style="position:absolute; top:63px; left:0px;" class="dynamic class-RingWithNeighbors vertexCount-20" width="76" height="76"></canvas>
+		<p style="position:absolute; top:144px; left:-2px; width:106px;" class="note">The 4 neighbors of <br>each vertex have <br>3 out of 6 edges <br>among themselves. <br>C = 3/6 = 0.5</p>
+		<canvas style="position:absolute; top:63px; left:88px;" class="dynamic class-RingWithNeighborsAndShortcut vertexCount-20" width="76" height="76"></canvas>
+		<p style="position:absolute; top:144px; left:100px; width:106px;" class="note">With shortcut, <br>this is still true <br>for almost <br>every vertex.<br>
+C = 0.48</p>
+	</div>
+</div> <!-- row -->
+
+</div> <!-- section -->
+
+</div> <!-- body -->
+</div> <!-- paper -->
+
+<div class="shadowBottom"></div>
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- outro -->
+
+<div class="outro">
+
+<div class="body">
+
+<p>(The paper goes on to identify several real-life networks as small-world, and discuss the implications for dynamical systems.  I apologize for omitting the good stuff.)</p>
+
+<p>Some notes:</p>
+
+<p>A computer screen is not space-constrained like a physical journal.  We can use as many pixels as we need to explain a concept.  Paradoxically, making lavish use of space can result in briefer writing — illustrations allow for terser prose.  The word count (and reading time) of a graphic novel is far less than that of a comparable prose novel.</p>
+
+<p>When an algorithm is described in prose (or code), we are typically given only the rules of the system — we can't see the data or the state.  In order to understand what the algorithm is doing, we have to "play computer" and imagine the state in our head.  Illustrating the state of an algorithm at each step can make the description dramatically easier to follow.</p>
+
+<p>I've used a small amount of lightweight interactivity (via hover-sliders <img style="position:relative; top:3px;" src="./Scientific Communication As Sequential Art_files/SliderExample.png" width="61" height="13"> ) to allow the reader to see the progression of the algorithm, in-place, over many steps.  This interaction is optional and supplemental — it's available for a reader who wants the clarification, but can be skipped by a reader who already understands (or doesn't care).  For more on subtle supplemental interactivity, see <a href="http://worrydream.com/ExplorableExplanations/">Explorable Explanations</a>.</p>
+
+<p>The roles of pictures and prose can be fluid.  For the description of the algorithm, pictures are coupled to individual sentences or even fragments, and the words serve to explain the action in the pictures:</p>
+
+<p><img class="shadowed" style="margin-left:30px;" src="./Scientific Communication As Sequential Art_files/Example1.png" width="480" height="91"></p>
+
+<p>Whereas, for the material near the end, pictures are coupled to entire paragraphs, and the pictures serve as examples for concepts conveyed by words:</p>
+
+<p><img class="shadowed" style="margin-left:30px;" src="./Scientific Communication As Sequential Art_files/Example2.png" width="264" height="140"></p>
+
+<p>Finally, "comic-style" needn't mean characters, dialog, word balloons, or sound effects.  Let alone superheroes or anthropomorphic animals.  The comic form is about sequences of tightly-integrated words and pictures, together conveying a message more powerfully than the sum of their parts.  The potential of this form to explain difficult concepts is unmatched and underused.</p>
+
+<p>For another comic-style explanation (this time, an art analysis), see <a href="http://worrydream.com/TomOrebsPortraitOfWardKimball/">Tom Oreb's Portrait of Ward Kimball</a>.</p>
+
+<p style="margin-top:40px;"><iframe allowtransparency="true" frameborder="0" scrolling="no" src="./Scientific Communication As Sequential Art_files/tweet_button.1375828408.html" class="twitter-share-button twitter-count-none" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 57px; height: 20px;"></iframe><script type="text/javascript" src="./Scientific Communication As Sequential Art_files/widgets.js"></script></p>
+
+</div> <!-- body -->
+
+</div> <!-- outro -->
+
+
+</div> <!-- everything -->
+
+</body></html>

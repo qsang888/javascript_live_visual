@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My Draw Setup</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <canvas id="myCanvas" width="400" height="300"></canvas>
+     <canvas id="myCanvas_2" width="400" height="300"></canvas>
+      
+      <p><label id = "speed-amount">0</label><input type="range" id="slicer-speed" min = "10" max = "100" step = "2" value="0"></p>
+      
+      <p><label id = "range-amount">0</label> <input type="range" id="slicer-range" min = "10" max = "100" step = "2" value="0"></p>
+      
+      <p><label id = "size-amount">0</label> <input type="range" id="slicer-size" min = "1" max = "100" step = "2" value="0"></p>
+      
+<!--      <script src="js/utils.js"></script>-->
+      <script src="js/draw_shape.js"></script>
+      <script src="js/control.js"></script>
+    <script>
+
+    window.onload = function () {
+        
+        //initilize my canvas
+       var canvas = document.getElementById('myCanvas');
+       var context = canvas.getContext('2d');
+       
+        //create an image on a canvas, set up position
+        ////render my ball circles
+        var myBall = Shape.Ball()
+          angle = 0
+          centerY = 200,
+              
+          range = 60,
+          speed = 0.05;
+          centerScale = .3
+        
+          //start position of ball        
+          myBall.x = 40;
+          myBall.y = canvas.height / 2;
+        
+     (function drawFrame () {
+         
+         window.requestAnimationFrame(drawFrame, canvas);
+        
+          context.clearRect(0,0,canvas.width,canvas.height);
+
+          update();
+          
+          draw_path();
+        
+          myBall.draw(context);  
+        
+
+    }());   
+        
+function draw_path(){
+    start_postion_x = myBall.x 
+    start_postion_y = myBall.y
+      
+      var feq = 800
+      
+      //make a copy
+      // console.log('myBall:',myBall)
+      copy_ball = Shape.Ball()
+      copy_ball.x = myBall.x;
+      copy_ball.y = myBall.y;
+    
+      slicer_speed = document.getElementById('slicer-speed')
+      new_speed = speed
+      new_range = range
+     
+      for (var i = 0; i<feq; i+=1){
+        
+        
+        new_speed   += slicer_speed.value/300
+        copy_ball.y = canvas.height / 2 + Math.sin(Math.PI*new_speed) * range 
+        copy_ball.x += .5  
+        
+        copy_ball.scaleX = copy_ball.scaleY = centerScale/5
+        
+        copy_ball.draw(context)
+      }
+}
+       
+       
+        
+function update() {
+    var slicer_speed = document.getElementById('slicer-speed')
+    var slicer_range = document.getElementById('slicer-range')
+    var slicer_size  = document.getElementById('slicer-size')
+    
+    var speed_amount = document.getElementById("speed-amount")
+    var range_amount = document.getElementById("range-amount")
+    var size_amount  = document.getElementById("size-amount")
+       
+//        context.clearRect(0, 0, canvas.width, canvas.height);
+        
+        //ball motion -1 sin-wave
+        myBall.y = canvas.height / 2 + Math.sin(Math.PI*speed) * range; 
+        myBall.x += .5  
+        myBall.scaleX = centerScale + Math.sin(Math.PI*speed) * range;
+        
+        
+        speed += slicer_speed.value/300
+        range  = slicer_range.value
+        myBall.scaleX = myBall.scaleY = centerScale + slicer_size.value/100
+        
+        //update slicer 
+        speed_amount.innerHTML = "Speed: " + slicer_speed.value
+        range_amount.innerHTML = "Range: " + slicer_range.value
+        size_amount.innerHTML  = "Size: "  + slicer_size.value
+
+}//end update
+        
+        //mousemove event 
+//       canvas.addEventListener('mousemove', function (event) {
+//       
+////       console.log(event.clientX + ' ' + event.clientY)
+//            //picture rotate
+//    
+//       }, false);   
+
+}; // end window.load 
+        
+         
+    </script>
+        
+
+  </body>
+</html>

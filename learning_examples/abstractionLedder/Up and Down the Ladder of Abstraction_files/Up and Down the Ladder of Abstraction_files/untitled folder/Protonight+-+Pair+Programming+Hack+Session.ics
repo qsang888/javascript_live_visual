@@ -1,0 +1,46 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Meetup//RemoteApi//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-ORIGINAL-URL:http://www.meetup.com/jsmeetup/events/118098242/ical/Proto
+ night+-+Pair+Programming+Hack+Session.ics
+X-WR-CALNAME:Events - Protonight - Pair Programming Hack Session.ics
+X-MS-OLK-FORCEINSPECTOROPEN:TRUE
+BEGIN:VTIMEZONE
+TZID:America/Los_Angeles
+X-LIC-LOCATION:America/Los_Angeles
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0800
+TZOFFSETTO:-0700
+TZNAME:PDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0700
+TZOFFSETTO:-0800
+TZNAME:PST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+DTSTAMP:20130807T173831Z
+DTSTART;TZID=America/Los_Angeles:20130812T190000
+DTEND;TZID=America/Los_Angeles:20130812T220000
+STATUS:CONFIRMED
+SUMMARY:Protonight - Pair Programming Hack Session
+DESCRIPTION:The SF JavaScript Meetup\nMonday\, August 12 at 7:00 PM\n\nGe
+ t paired up with a random person to hack on whatever you want for 2 hour
+ s! RSVP using this calendar to attend as a developer.  To attend as an "
+ idea...\n\nDetails: http://www.meetup.com/jsmeetup/events/118098242/
+CLASS:PUBLIC
+CREATED:20130112T064400Z
+GEO:37.79;-122.41
+LOCATION:Workshop Cafe (180 Montgomery St\, San Francisco\, CA 94104)
+URL:http://www.meetup.com/jsmeetup/events/118098242/
+LAST-MODIFIED:20130731T002658Z
+UID:event_dfgsdfyrlbqb@meetup.com
+END:VEVENT
+END:VCALENDAR

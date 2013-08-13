@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My Draw Setup</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <canvas id="myCanvas" width="400" height="300"></canvas>
+     <canvas id="myCanvas_2" width="400" height="300"></canvas>
+      
+      <p><label id = "speed-amount">0</label><input type="range" id="slicer-speed" min = "10" max = "100" step = "2" value="0"></p>
+      
+      <p><label id = "range-amount">0</label> <input type="range" id="slicer-range" min = "10" max = "100" step = "2" value="0"></p>
+      
+      <p><label id = "size-amount">0</label> <input type="range" id="slicer-size" min = "1" max = "100" step = "2" value="0"></p>
+      
+<!--      <script src="js/utils.js"></script>-->
+      <script src="js/draw_shape.js"></script>
+      <script src="js/control.js"></script>
+    <script>
+        
+        //initilize my canvas
+       var canvas = document.getElementById('myCanvas');
+       var context = canvas.getContext('2d');
+       
+        //create an image on a canvas, set up position
+        ////render my ball circles
+        
+        //start position of ball   
+          initial_pos_x = 40
+          initial_pos_y = canvas.height / 2
+        
+        var myBall = Shape.Ball({pos_x:initial_pos_x, pos_y:initial_pos_y})
+        
+//         console.log(myBall.setPosition(1,1))
+         console.log('1:',myBall.getPosition())
+         console.log('1:',myBall.getScale())
+         
+         //update position
+         myBall.setPosition(initial_pos_x+5, initial_pos_y+5)
+         myBall.setScale('',3)
+         
+         console.log('2:',myBall.getPosition())
+         console.log('2:',myBall.getScale())
+         console.log('2-y:',myBall.getScale().y)
+         
+          angle = 0
+          centerY = 200,
+              
+          range = 60,
+          speed = 0.05;
+          centerScale = .3/5
+        
+          //start position of ball   
+          initial_pos_x = 40
+          initial_pos_y = canvas.height / 2
+          
+          end_pos_x = canvas.width * .9
+          end_pos_y = canvas.height
+          
+          
+//          myBall.x = initial_pos_x;
+//          myBall.y = initial_pos_y;
+//        
+     (function drawFrame () {
+         
+//             var slicer_speed = document.getElementById('slicer-speed')
+//            var slicer_range = document.getElementById('slicer-range')
+//            var slicer_size  = document.getElementById('slicer-size')
+//            
+//            var speed_amount = document.getElementById("speed-amount")
+//            var range_amount = document.getElementById("range-amount")
+//            var size_amount  = document.getElementById("size-amount")
+         
+         window.requestAnimationFrame(drawFrame, canvas);
+        
+          context.clearRect(0,0,canvas.width,canvas.height);
+
+          myBall.update_position([5,5],slicer_speed,slicer_range,slicer_size);
+          
+          draw_path(myBall,[5,5]);
+        
+          myBall.draw(context);  
+         
+          //update slicer 
+//        speed_amount.innerHTML = "Speed: " + slicer_speed.value
+//        range_amount.innerHTML = "Range: " + slicer_range.value
+//        size_amount.innerHTML  = "Size: "  + slicer_size.value
+        
+
+    }());   
+        
+
+        
+function draw_path(target,change){
+    start_position = target.getPosition() 
+      var feq = 800
+      
+      //make a copy
+      // console.log('myBall:',myBall)
+      copy_ball = Shape.Ball()
+      copy_ball.setPosition(start_position[0],start_position[1]);
+    
+//      slicer_speed = document.getElementById('slicer-speed')
+//      new_speed = speed
+//      new_range = range
+     
+      for (var i = 0; i<feq; i+=1){
+        
+        copy_ball.update_position(change);
+        
+        copy_ball.scaleX = copy_ball.scaleY = centerScale
+        
+        copy_ball.draw(context)
+      }
+
+}//end draw path    
+
+function draw(context,target){
+      context.save();
+      context.translate(target.getPosition());
+      context.rotate(this.rotation);
+      context.scale(this.scaleX, this.scaleY);
+      
+      context.lineWidth = this.lineWidth;
+      context.fillStyle = this.color;
+      context.beginPath();
+      //x, y, radius, start_angle, end_angle, anti-clockwise
+      context.arc(0, 0, this.radius, 0, (Math.PI * 2), true);
+      context.closePath();
+      context.fill();
+      if (this.lineWidth > 0) {
+        context.stroke();
+      }
+      context.restore(); 
+}
+           
+         
+    </script>
+        
+
+  </body>
+</html>

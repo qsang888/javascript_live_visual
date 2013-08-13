@@ -1,0 +1,25 @@
+/* Some HTML5 Tags
+ */
+
+aside, footer, header, nav, section {
+  display: block;
+}
+
+/* Examples
+ */
+
+body {
+  background-color: #bbb;
+  color: #383838;
+}
+
+#myCanvas {
+  background-color: #fff;
+}
+
+#myCanvas_right {
+  background-color: #fff;
+  
+}
+
+
