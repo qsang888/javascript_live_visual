@@ -29,8 +29,8 @@
         ////render my ball circles
         
         //start position of ball   
-          initial_pos_x = 1
-          initial_pos_y = 1
+          initial_pos_x = 0
+          initial_pos_y = 0
         
         var myBall = Shape.Ball({pos_x:initial_pos_x, pos_y:initial_pos_y})
 //         console.log(myBall.setPosition(1,1))
@@ -78,7 +78,7 @@
  } //end windows onload
         
 function simulate_path(target,context){
-      var feq = 500
+      var feq = 800
       
       start_position = target.getPosition()
       
