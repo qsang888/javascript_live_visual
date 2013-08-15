@@ -55,6 +55,7 @@ Shape.Any = function(my_constructor){
     }
     
     
+    
 //    var myPrivateMethod = {}
 //        
 //    myPrivateMethod.foo = function(){}
@@ -75,16 +76,24 @@ Shape.Ball = function(my_constructor){
       context.arc(0, 0, radius, 0, (Math.PI * 2), true)
       context.closePath()  
       
-      context.restore();
-        
-        
-        
-        
+      context.restore();     
         
     }
     
     publicMethod.setRadius = function(){}
     publicMethod.getRadius = function(){}
+    
+    
+    publicMethod.getBounds = function () {
+        var position = this.getPosition()
+      return {
+        x: position.x - radius,
+        y: position.y - radius,
+        width:  radius*2,
+        height: radius*2
+        };
+    
+    }
     
     return publicMethod
 

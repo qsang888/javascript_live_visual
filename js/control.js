@@ -19,3 +19,90 @@ Control.Slicer = function(e){
             
             
 }
+
+Control.Mouse = function(element){
+    
+    // a canvas object is the element
+    
+    var mouse = {x: 0, y: 0, event: null}
+    
+      body_scrollLeft    = document.body.scrollLeft,
+      element_scrollLeft = document.documentElement.scrollLeft,
+      body_scrollTop     = document.body.scrollTop,
+      element_scrollTop  = document.documentElement.scrollTop,
+      offsetLeft         = element.offsetLeft,
+      offsetTop          = element.offsetTop;
+  
+    element.addEventListener('mousemove', function (event) {
+        var x, y;
+        
+        if (event.pageX || event.pageY) {
+          x = event.pageX;
+          y = event.pageY;
+        } else {
+          x = event.clientX + body_scrollLeft + element_scrollLeft;
+          y = event.clientY + body_scrollTop + element_scrollTop;
+        }
+        x -= offsetLeft;
+        y -= offsetTop;
+        
+        mouse.x = x;
+        mouse.y = y;
+        mouse.event = event;
+  }, false);
+    
+//    element.addEventListener('mousedown', function () {
+//        if (utils.containsPoint(ball.getBounds(), mouse.x, mouse.y)) {
+//          canvas.addEventListener('mouseup', onMouseUp, false);
+//          canvas.addEventListener('mousemove', onMouseMove, false);
+//        }
+//      }, false);
+//      
+//      function onMouseUp () {
+//        canvas.removeEventListener('mouseup', onMouseUp, false);
+//        canvas.removeEventListener('mousemove', onMouseMove, false);
+//      }
+//      
+//      function onMouseMove (event) {
+//        ball.x = mouse.x;
+//        ball.y = mouse.y;
+//      }
+
+    
+    
+  return mouse;
+     
+}
+
+
+
+
+Control.captureMouse = function (element) {
+  var mouse = {x: 0, y: 0, event: null},
+      body_scrollLeft = document.body.scrollLeft,
+      element_scrollLeft = document.documentElement.scrollLeft,
+      body_scrollTop = document.body.scrollTop,
+      element_scrollTop = document.documentElement.scrollTop,
+      offsetLeft = element.offsetLeft,
+      offsetTop = element.offsetTop;
+  
+  element.addEventListener('mousemove', function (event) {
+    var x, y;
+    
+    if (event.pageX || event.pageY) {
+      x = event.pageX;
+      y = event.pageY;
+    } else {
+      x = event.clientX + body_scrollLeft + element_scrollLeft;
+      y = event.clientY + body_scrollTop + element_scrollTop;
+    }
+    x -= offsetLeft;
+    y -= offsetTop;
+    
+    mouse.x = x;
+    mouse.y = y;
+    mouse.event = event;
+  }, false);
+  
+  return mouse;
+};     
