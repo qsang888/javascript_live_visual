@@ -7,6 +7,8 @@ Shape.Any = function(my_constructor){
    //private properties
    var pos_x     =  my_constructor.pos_x  || 0
    var pos_y     =  my_constructor.pos_y  || 0
+   var v_x       =  my_constructor.v_x  || 0
+   var v_y       =  my_constructor.v_y  || 0
    var scale_x   =  my_constructor.scale_x || .5
    var scale_y   =  my_constructor.scale_y || .5
    var color     =  my_constructor.color || "#ff0000";
@@ -26,7 +28,20 @@ Shape.Any = function(my_constructor){
             pos_y = y || pos_y   
     };
     
-    publicMethod.getScale = function(x,y){
+    publicMethod.setVelocity = function(vx,vy){
+        v_x = vx || v_x 
+        v_y = vy || v_y
+    }
+    
+    publicMethod.getVelocity = function(){
+        speed = {}
+        speed.x = v_x
+        speed.y = v_y
+        return speed
+    }
+    
+    
+    publicMethod.getScale = function(){
             scale   = {}
             scale.x = scale_x
             scale.y = scale_y
@@ -37,10 +52,18 @@ Shape.Any = function(my_constructor){
             scale_x = x || scale_x
             scale_y = y || scale_y
     };
+    
+    publicMethod.setColor = function(c){
+            color = c || color
+    };
+    
+    publicMethod.getColor = function(){
+            return color;
+    };
+    
         
     publicMethod.draw = function(context){
-//        console.log('run me')
-//        console.log(pos_x,'', pos_y)
+
         context.save();
         context.translate(pos_x, pos_y);
         context.rotate(rotation);
@@ -80,8 +103,12 @@ Shape.Ball = function(my_constructor){
         
     }
     
-    publicMethod.setRadius = function(){}
-    publicMethod.getRadius = function(){}
+    publicMethod.setRadius = function(r){
+        radius = r || radius
+    }
+    publicMethod.getRadius = function(){
+        return radius
+    }
     
     
     publicMethod.getBounds = function () {
@@ -91,7 +118,7 @@ Shape.Ball = function(my_constructor){
         y: position.y - radius,
         width:  radius*2,
         height: radius*2
-        };
+      };
     
     }
     

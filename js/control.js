@@ -51,22 +51,7 @@ Control.Mouse = function(element){
         mouse.event = event;
   }, false);
     
-//    element.addEventListener('mousedown', function () {
-//        if (utils.containsPoint(ball.getBounds(), mouse.x, mouse.y)) {
-//          canvas.addEventListener('mouseup', onMouseUp, false);
-//          canvas.addEventListener('mousemove', onMouseMove, false);
-//        }
-//      }, false);
-//      
-//      function onMouseUp () {
-//        canvas.removeEventListener('mouseup', onMouseUp, false);
-//        canvas.removeEventListener('mousemove', onMouseMove, false);
-//      }
-//      
-//      function onMouseMove (event) {
-//        ball.x = mouse.x;
-//        ball.y = mouse.y;
-//      }
+
 
     
     
