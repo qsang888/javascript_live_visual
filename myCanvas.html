@@ -202,35 +202,35 @@ function motionUpdate(x,y,vx,vy){
         
 
   
-//    period = Math.PI*.04
-//    position.x = x + .5*slicer_speed.value
-//    position.y = Math.cos(x*period)*slicer_range.value + 300/2
+    period = Math.PI*.04
+    output.x = x + .5*slicer_speed.value
+    output.y = Math.cos(x*period)*slicer_range.value + 300/2
         
-        spring = slicer_spring.value,
-        friction = slicer_extra.value,
-        gravity = slicer_gravity.value,
-        
-        t = 1/60 //60 frames per second
-        
-        var dx = mouse.x - x,
-            dy = mouse.y - y,
-            ax = dx * spring,
-            ay = dy * spring;
-
-        vx += ax;
-        vy += ay;
-        vy += gravity;
-        vx *= friction;
-        vy *= friction;
-        
-        x += vx;
-        y += vy;
-    
+//        spring = slicer_spring.value,
+//        friction = slicer_extra.value,
+//        gravity = slicer_gravity.value,
+//        
+//        t = 1/60 //60 frames per second
+//        
+//        var dx = mouse.x - x,
+//            dy = mouse.y - y,
+//            ax = dx * spring,
+//            ay = dy * spring;
+//
+//        vx += ax;
+//        vy += ay;
+//        vy += gravity;
+//        vx *= friction;
+//        vy *= friction;
+//        
+//        x += vx;
+//        y += vy;
+//    
         output.vx = vx
         output.vy = vy
-                
-        output.x = x 
-        output.y = y 
+//                
+//        output.x = x 
+//        output.y = y 
         
     return output
 }    
